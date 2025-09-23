@@ -175,10 +175,10 @@
       <div class="row q-px-md">
         <q-item tag="label" class="col-8" v-ripple>
           <q-item-section>
-            <q-item-label>Token NotificaME</q-item-label>
+            <q-item-label>Token NotificaME - Use cupom whazing - https://hub.whazing.com.br</q-item-label>
           </q-item-section>
           <q-tooltip content-class="bg-negative text-bold">
-            HUB Notificame (Beta)
+            Token NotificaME - Use cupom whazing - https://hub.whazing.com.br
           </q-tooltip>
         </q-item>
 

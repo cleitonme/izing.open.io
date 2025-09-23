@@ -59,7 +59,7 @@ const UpdateTicketService = async ({
       },
       {
         association: "whatsapp",
-        attributes: ["id", "name"]
+        attributes: ["id", "name", "wavoip"]
       }
     ]
   });

@@ -24,4 +24,6 @@ messageRoutes.delete("/messages/:messageId", isAuth, MessageController.remove);
 
 messageRoutes.post("/messages/edit/:messageId", isAuth, MessageController.edit);
 
+messageRoutes.post("/messages/reactions/:messageId", isAuth, MessageController.addReaction);
+
 export default messageRoutes;

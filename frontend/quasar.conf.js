@@ -125,7 +125,7 @@ module.exports = function (ctx) {
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: {maximumFileSizeToCacheInBytes: 5000000,}, // only for GenerateSW
+      workboxOptions: { maximumFileSizeToCacheInBytes: 5000000 }, // only for GenerateSW
       manifest: {
         name: 'GlobalMensseger',
         short_name: 'GlobalMensseger',

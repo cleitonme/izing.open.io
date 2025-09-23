@@ -31,14 +31,9 @@ const VerifyMessage = async (
     timestamp: msg.timestamp,
     status: "received"
   };
-  
+
   await ticket.update({
-    lastMessage:
-      msg.type === "location"
-        ? msg.location.options
-          ? `Localization - ${msg.location.options}`
-          : "Localization"
-        : msg.body
+    lastMessage: msg.body || ""
   });
 
   await ticket.update({

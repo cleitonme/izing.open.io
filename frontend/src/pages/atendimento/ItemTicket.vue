@@ -263,7 +263,7 @@ img:after
   width: inherit
   height: inherit
   z-index: 10
-  background: #ebebeb url('http://via.placeholder.com/300?text=PlaceHolder') no-repeat center
+  background: #ebebeb no-repeat center
   color: transparent
 
 .ticket-active-item

@@ -1,10 +1,22 @@
-[![Grupo do WhatsApp](https://img.shields.io/badge/WhatsApp-Grupo%20Whazing-brightgreen.svg)](https://chat.whatsapp.com/KAk11eaAfRu6Bp13wQX6MB)
+[![Grupo do WhatsApp](https://img.shields.io/badge/WhatsApp-Grupo%20Whazing-brightgreen.svg)](https://grupo.whazing.com.br)
 
 [Fork do projeto ldurans](https://github.com/ldurans/izing.open.io)
 
-# Izing com painel SaaS - Hub NotificaMe(facebook e instagram) 
+# Izing com painel SaaS - Hub NotificaMe(facebook e instagram) - Wavoip
 
-Preço especial por canal NotificaMe chamar whatsapp (48) 99941-6725
+Cupom desconto Notifica Me - cadastre pelo link https://hub.whazing.com.br
+
+```bash
+whazing
+```
+
+https://wavoip.com/
+
+- Cupom 50% desconto Wavoip
+
+```bash
+whazing
+```
 
 Um sistema para gestão de atendimento multicanais centralizado.
 

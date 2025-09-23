@@ -409,7 +409,10 @@ import { VEmojiPicker } from 'v-emoji-picker'
 import { mapGetters } from 'vuex'
 import RecordingTimer from './RecordingTimer'
 import MicRecorder from 'mic-recorder-to-mp3'
-const Mp3Recorder = new MicRecorder({ bitRate: 128 })
+const Mp3Recorder = new MicRecorder({
+  bitRate: 128,
+  encodeAfterRecord: true
+})
 import mixinAtualizarStatusTicket from './mixinAtualizarStatusTicket'
 
 export default {
@@ -439,6 +442,7 @@ export default {
       abrirFilePicker: false,
       abrirModalPreviewImagem: false,
       isRecordingAudio: false,
+      isSending: false,
       urlMediaPreview: {
         title: '',
         src: ''
@@ -530,6 +534,7 @@ export default {
       }
     },
     async handleStopRecordingAudio () {
+      const ticketId = this.ticketFocado.id
       this.loading = true
       try {
         const [, blob] = await Mp3Recorder.stop().getMp3()
@@ -548,7 +553,6 @@ export default {
         if (this.isScheduleDate) {
           formData.append('scheduleDate', this.scheduleDate)
         }
-        const ticketId = this.ticketFocado.id
         // await EnviarMensagemTexto(ticketId, formData)
         if (this.ticketFocado.channel.includes('hub')) {
           await EnviarMensagemHub(ticketId, formData)
@@ -642,6 +646,9 @@ export default {
         this.$notificarErro('Para agendar uma mensagem, informe o campo Data/Hora Agendamento.')
         return
       }
+      if (this.isSending) return
+
+      this.isSending = true
       this.loading = true
       const ticketId = this.ticketFocado.id
       const message = !this.cMostrarEnvioArquivo
@@ -670,6 +677,7 @@ export default {
       }
       this.isRecordingAudio = false
       this.loading = false
+      this.isSending = false
       setTimeout(() => {
         this.$refs.inputEnvioMensagem.focus()
       }, 300)

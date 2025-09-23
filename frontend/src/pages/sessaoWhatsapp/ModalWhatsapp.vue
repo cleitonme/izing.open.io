@@ -223,6 +223,16 @@
             </div>
           </div>
         </div>
+        <div class="col-12" v-if="whatsapp.type === 'whatsapp'">
+          <div class="row items-center">
+            <div class="col-12">
+              <label class="text-caption">Use cupom desconto "whazing" - <a href="https://app.wavoip.com/" target="_blank">Visite app.wavoip.com</a></label>
+              <c-input outlined
+                       label="Wavoip chamadas whatsapp"
+                       v-model="whatsapp.wavoip"/>
+            </div>
+          </div>
+        </div>
       </q-card-section>
       <q-card-actions
         align="center"

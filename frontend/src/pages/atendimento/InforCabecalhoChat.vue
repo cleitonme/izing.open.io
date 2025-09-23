@@ -77,6 +77,20 @@
           class="q-gutter-xs q-pr-sm"
           v-if="Value(cticket.contact, 'name')"
         >
+
+          <q-btn
+            @click="openWavoipCall"
+            color="black"
+            rounded
+            icon="mdi-phone"
+            :class="$q.dark.isActive ? ('btn-rounded-cor1-dark') : ''"
+            :disable="cticket.status === 'closed' || cticket.status === 'pending' || cticket.channel !== 'whatsapp' || !cticket.whatsapp?.wavoip || cticket.contact?.isGroup"
+          >
+            <q-tooltip content-class="bg-grey-9 text-bold">
+              Ligar Wavoip
+            </q-tooltip>
+          </q-btn>
+
           <q-btn
             @click="$emit('abrir:modalAgendamentoMensagem')"
             icon="mdi-message-text-clock-outline"
@@ -288,6 +302,22 @@ export default {
         console.error(error)
         this.$notificarErro('Problema ao carregar usuários', error)
       }
+    },
+    openWavoipCall () {
+      if (!this.cticket.whatsapp?.wavoip || !this.cticket.contact?.number) {
+        return
+      }
+
+      const token = this.cticket.whatsapp.wavoip
+      const phone = this.cticket.contact.number.replace(/\D/g, '')
+      const name = this.cticket.contact.name || ''
+      const url = `https://app.wavoip.com/call?token=${token}&phone=${phone}&name=${name}&start_if_ready=true&close_after_call=true`
+
+      window.open(
+        url,
+        'wavoip',
+        'toolbar=no,scrollbars=no,resizable=no,top=500,left=500,width=500,height=700'
+      )
     },
     async confirmarTransferenciaTicket () {
       if (!this.filaSelecionada) return

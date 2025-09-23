@@ -1,4 +1,3 @@
-import { getMessengerBot } from "../libs/messengerBot";
 import Message from "../models/Message";
 import Ticket from "../models/Ticket";
 import ShowTicketService from "../services/TicketServices/ShowTicketService";
@@ -25,10 +24,6 @@ const SetTicketMessagesAsRead = async (ticket: Ticket): Promise<void> => {
       wbot
         .sendSeen(`${ticket.contact.number}@${ticket.isGroup ? "g" : "c"}.us`)
         .catch(e => console.error("não foi possível marcar como lido", e));
-    }
-    if (ticket.channel === "messenger") {
-      const messengerBot = getMessengerBot(ticket.whatsappId);
-      messengerBot.markSeen(ticket.contact.messengerId);
     }
   } catch (err) {
     logger.warn(

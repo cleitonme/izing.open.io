@@ -80,6 +80,22 @@
               @input="handleSaveWhatsApp(item)"
             />
           </q-card-section>
+          <q-card-section>
+            <q-select
+              outlined
+              dense
+              rounded
+              label="Fila"
+              v-model="item.queueId"
+              :options="listaFila"
+              map-options
+              emit-value
+              option-value="id"
+              option-label="queue"
+              clearable
+              @input="handleSaveWhatsApp(item)"
+            />
+          </q-card-section>
           <q-separator />
           <q-card-actions
             class="q-gutter-md q-pa-md q-pt-none"
@@ -183,6 +199,7 @@
 <script>
 
 import { DeletarWhatsapp, DeleteWhatsappSession, StartWhatsappSession, ListarWhatsapps, RequestNewQrCode, UpdateWhatsapp } from 'src/service/sessoesWhatsapp'
+import { ListarFilas } from 'src/service/filas'
 import { format, parseISO } from 'date-fns'
 import pt from 'date-fns/locale/pt-BR/index'
 import ModalQrCode from './ModalQrCode'
@@ -210,6 +227,7 @@ export default {
       modalWhatsapp: false,
       whatsappSelecionado: {},
       listaChatFlow: [],
+      listaFila: [],
       whatsAppId: null,
       canais: [],
       objStatus: {
@@ -323,6 +341,10 @@ export default {
         console.error(error)
       }
     },
+    async buscaFilas () {
+      const { data } = await ListarFilas()
+      this.listaFila = data.filter(f => f.isActive)
+    },
     async handleRequestNewQrCode (channel, origem) {
       if (channel.type === 'telegram' && !channel.tokenTelegram) {
         this.$notificarErro('Necessário informar o token para Telegram')
@@ -405,6 +427,7 @@ export default {
     this.isAdmin = localStorage.getItem('profile')
     this.listarWhatsapps()
     this.listarChatFlow()
+    this.buscaFilas()
   }
 }
 </script>

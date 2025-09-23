@@ -8,8 +8,10 @@
   "license": "AGPL-3.0-or-later",
   "github": "https://github.com/cleitonme/izing.open.io",
   "scripts": {
-    "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "fix": "eslint --ext .js,.vue ./ --fix",
+    "start": "pm2 start server.js --name izing-frontend",
+    "stop": "pm2 stop server.js --name izing-frontend",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && npx quasar build -P -m pwa"
   },
   "dependencies": {
     "@quasar/cli": "^2.4.0",
@@ -22,7 +24,7 @@
     "drawflow": "0.0.59",
     "js-base64": "^3.7.5",
     "lodash": "^4.17.21",
-    "mic-recorder-to-mp3": "^2.2.2",
+    "mic-recorder-to-mp3": "github:cleitonme/mic-recorder-to-mp3-alt2",
     "printd": "^1.6.0",
     "qrcode.vue": "^1.7.0",
     "quasar": "^1.22.10",
@@ -33,14 +35,14 @@
     "vue-apexcharts": "^1.6.2",
     "vue-codemirror": "^4.0.6",
     "vue-easy-lightbox": "^0.14.0",
-    "vue-facebook-login-component": "^4.0.2",
     "vue-infinite-loading": "^2.4.5",
     "vue-linkify": "^1.0.1",
     "vue-loader": "^15.10.1",
     "vuedraggable": "^2.24.3",
     "vuelidate": "^0.7.7",
     "vuelidate-error-extractor": "^2.4.1",
-    "xlsx": "^0.16.9"
+    "wavesurfer.js": "^6.6.4",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
@@ -56,11 +58,6 @@
     "eslint-plugin-vue": "^6.1.2",
     "quasar-app-extension-qdatetimepicker": "^1.0.0-rc.18",
     "workbox-webpack-plugin": "^6.6.0"
-  },
-  "scripts": {
-    "start": "pm2 start server.js --name izing-frontend",
-    "stop": "pm2 stop server.js --name izing-frontend",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && npx quasar build -P -m pwa"
   },
   "browserslist": [
     "last 10 Chrome versions",

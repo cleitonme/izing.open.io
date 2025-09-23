@@ -94,3 +94,11 @@ export function EditarMensagem (mensagem) {
     data: mensagem
   })
 }
+
+export function ReagirMensagem (data) {
+  return request({
+    url: `/messages/reactions/${data.messageId}`,
+    method: 'post',
+    data
+  })
+}

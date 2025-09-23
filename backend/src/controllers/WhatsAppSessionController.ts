@@ -8,7 +8,6 @@ import UpdateWhatsAppService from "../services/WhatsappService/UpdateWhatsAppSer
 import { setValue } from "../libs/redisClient";
 import { logger } from "../utils/logger";
 import { getTbot, removeTbot } from "../libs/tbot";
-import { getInstaBot, removeInstaBot } from "../libs/InstaBot";
 import AppError from "../errors/AppError";
 import { getIO } from "../libs/socket";
 
@@ -72,12 +71,6 @@ const remove = async (req: Request, res: Response): Promise<Response> => {
         .logOut()
         .catch(error => logger.error("Erro ao fazer logout da conexão", error));
       removeTbot(channel.id);
-    }
-
-    if (channel.type === "instagram") {
-      const instaBot = getInstaBot(channel.id);
-      await instaBot.destroy();
-      removeInstaBot(channel);
     }
 
     await channel.update({

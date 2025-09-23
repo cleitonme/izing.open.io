@@ -1,6 +1,4 @@
-import { getInstaBot } from "../libs/InstaBot";
 import { getTbot } from "../libs/tbot";
-import InstagramSendMessagesSystem from "../services/InstagramBotServices/InstagramSendMessagesSystem";
 import TelegramSendMessagesSystem from "../services/TbotServices/TelegramSendMessagesSystem";
 import SendWhatsAppMedia from "../services/WbotServices/SendWhatsAppMedia";
 import SendWhatsAppMessage from "../services/WbotServices/SendWhatsAppMessage";
@@ -22,13 +20,6 @@ const SendMessageSystemProxy = async ({
 
   if (messageData.mediaName) {
     switch (ticket.channel) {
-      case "instagram":
-        message = await InstagramSendMessagesSystem(
-          getInstaBot(ticket.whatsappId),
-          ticket,
-          { ...messageData, media }
-        );
-        break;
 
       case "telegram":
         message = await TelegramSendMessagesSystem(
@@ -46,13 +37,6 @@ const SendMessageSystemProxy = async ({
 
   if (!media) {
     switch (ticket.channel) {
-      case "instagram":
-        message = await InstagramSendMessagesSystem(
-          getInstaBot(ticket.whatsappId),
-          ticket,
-          messageData
-        );
-        break;
 
       case "telegram":
         message = await TelegramSendMessagesSystem(
