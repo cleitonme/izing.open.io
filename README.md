@@ -88,6 +88,6 @@ WHAZING
 
 ## Consultoria particular
 
-Para quem gostaria de uma consultoria ou que eu faça instalação pode chamar no whatsapp (será cobrado por isso) 48 999416725
+Para quem gostaria de uma consultoria ou que eu faça instalação pode chamar no whatsapp (será cobrado por isso) (48) 3197-0599
 
 -  [Versão baseada no izing com Painel SaaS e API Baileys](https://github.com/cleitonme/Whazing-SaaS)
